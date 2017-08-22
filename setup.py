@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 from setuptools import setup
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup(
     name='dolarpy',
     packages=['dolarpy'],
@@ -11,5 +14,5 @@ setup(
     url='https://github.com/melizeche/dolarpy-wrapper-python',
     license='MIT',
     use_2to3=True,
-    install_requires=["requests"]
+    install_requires=required
 )
