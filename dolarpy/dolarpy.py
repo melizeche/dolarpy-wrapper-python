@@ -26,7 +26,6 @@ def build_exchanges_list():
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
         if key == 'bcp':
-            print("SSDF@@@")
             temp = BCP(key, value['compra'], value[
                        'venta'], value['referencial_diario'])
         else:
@@ -40,7 +39,6 @@ def build_exchanges_dict():
     exchanges = {}
     for key, value in dump['dolarpy'].iteritems():
         if key == 'bcp':
-            print("SSDF@@@")
             temp = BCP(key, value['compra'], value[
                        'venta'], value['referencial_diario'])
         else:
