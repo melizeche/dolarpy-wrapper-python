@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 from .exchange import Exchange, BCP
 
+DEFAULT_PROVIDER = 'bcp'
 
 def get_dump():
     try:
@@ -13,7 +14,7 @@ def get_dump():
     return api_dump
 
 
-def get_sources():
+def get_providers():
     dump = get_dump()
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
@@ -37,7 +38,7 @@ def build_exchanges_list():
 def build_exchanges_dict():
     dump = get_dump()
     exchanges = {}
-    for key, value in dump['dolarpy'].iteritems():
+    for key, value in dump['dolarpy'].items():
         if key == 'bcp':
             temp = BCP(key, value['compra'], value[
                        'venta'], value['referencial_diario'])
@@ -50,9 +51,35 @@ def build_exchanges_dict():
 def get_all():
     return build_exchanges_dict()
 
-# def get(**kwargs):
-#     exchanges = build_exchanges_dict()
-#     if('exchange' in kwargs):
-#         return
-#     else:
-#         return exchanges['bcp'].referencial
+
+def get(**kwargs):
+    exchanges = build_exchanges_dict()
+    if('provider' in kwargs):
+        try:
+            return exchanges[kwargs['provider']].compra
+        except KeyError:
+            return None
+    else:
+        return exchanges[DEFAULT_PROVIDER].referencial
+
+
+def get_compra(**kwargs):
+    exchanges = build_exchanges_dict()
+    if('provider' in kwargs):
+        try:
+            return exchanges[kwargs['provider']].compra
+        except KeyError:
+            return None
+    else:
+        return exchanges[DEFAULT_PROVIDER].compra
+
+
+def get_venta(**kwargs):
+    exchanges = build_exchanges_dict()
+    if('provider' in kwargs):
+        try:
+            return exchanges[kwargs['provider']].venta
+        except KeyError:
+            return None
+    else:
+        return exchanges[DEFAULT_PROVIDER].venta

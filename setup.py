@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 setup(
     name='dolarpy',
     packages=['dolarpy'],
-    version='0.1.4',
+    version='0.2',
     description=('Wrapper for DolarPy, an PYG/USD exchange rate API.'),
     author='Marcelo Elizeche Landó',
     author_email='melizeche@gmail.com',
@@ -16,7 +16,7 @@ setup(
     use_2to3=True,
     install_requires=required,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'License :: OSI Approved :: MIT License',

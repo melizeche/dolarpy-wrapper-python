@@ -13,7 +13,11 @@ pip install dolarpy
 ```
 import dolarpy
 
-dolar = dolarpy.get_all()['bcp']['referencial']
+providers = dolarpy.get_providers() # 'bcp', 'maxicambios', 'cambioschaco', etc...
+dolar_referencial = dolarpy.get() # default: BCP referencial_diario
+dolar_compra_chaco = dolarpy.get_compra(provider='cambioschaco')
+dolar_venta_maxi = dolarpy.get_venta(provider='maxicambios')
+
 ```
 
 ## Requirements
