@@ -1,1 +1,1 @@
-from dolarpy import get_dump, get_sources, get_all
+from .dolarpy import get_dump, get_sources, get_all

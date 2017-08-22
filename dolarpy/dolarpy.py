@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from exchange import Exchange, BCP
+from .exchange import Exchange, BCP
 
 
 def get_dump():
