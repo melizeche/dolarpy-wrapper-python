@@ -3,10 +3,12 @@ from datetime import datetime
 from .exchange import Exchange, BCP
 
 DEFAULT_PROVIDER = 'bcp'
+API_URL = 'https://dolar.melizeche.com/api/1.0/'
+
 
 def get_dump():
     try:
-        api_dump = requests.get("https://dolar.melizeche.com/api/1.0/").json()
+        api_dump = requests.get(API_URL).json()
     except:
         api_dump = None
         print("Something went wrong")
