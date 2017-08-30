@@ -29,7 +29,7 @@ def get_providers():
 def build_exchanges_list():
     """Returns a Exchange objects list"""
     dump = get_dump()
-    updated = datetime.strptime(api_dump['updated'], '%Y-%m-%d %H:%M:%S')
+    updated = datetime.strptime(dump['updated'], '%Y-%m-%d %H:%M:%S')
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
         if key == 'bcp':
@@ -44,7 +44,7 @@ def build_exchanges_list():
 def build_exchanges_dict():
     """Returns a Exchange objects dict"""
     dump = get_dump()
-    updated = datetime.strptime(api_dump['updated'], '%Y-%m-%d %H:%M:%S')
+    updated = datetime.strptime(dump['updated'], '%Y-%m-%d %H:%M:%S')
     exchanges = {}
     for key, value in dump['dolarpy'].items():
         if key == 'bcp':
