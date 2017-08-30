@@ -7,6 +7,7 @@ API_URL = 'https://dolar.melizeche.com/api/1.0/'
 
 
 def get_dump():
+    """Get raw API output in a dict"""
     try:
         api_dump = requests.get(API_URL).json()
     except:
@@ -17,6 +18,7 @@ def get_dump():
 
 
 def get_providers():
+    """Get a list of providers/exchanges"""
     dump = get_dump()
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
@@ -25,6 +27,7 @@ def get_providers():
 
 
 def build_exchanges_list():
+    """Returns a Exchange objects list"""
     dump = get_dump()
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
@@ -38,6 +41,7 @@ def build_exchanges_list():
 
 
 def build_exchanges_dict():
+    """Returns a Exchange objects dict"""
     dump = get_dump()
     exchanges = {}
     for key, value in dump['dolarpy'].items():
@@ -51,10 +55,17 @@ def build_exchanges_dict():
 
 
 def get_all():
+    """Get all exchanges in a dict"""
     return build_exchanges_dict()
 
 
 def get(**kwargs):
+    """
+    Get a integer with the rate
+
+    Keyword arguments:
+    provider -- which provider to use, if not the default
+    """
     exchanges = build_exchanges_dict()
     if('provider' in kwargs):
         try:
@@ -66,6 +77,12 @@ def get(**kwargs):
 
 
 def get_compra(**kwargs):
+    """
+    Get a integer with the buy rate
+
+    Keyword arguments:
+    provider -- which provider to use, if not the default
+    """
     exchanges = build_exchanges_dict()
     if('provider' in kwargs):
         try:
@@ -77,6 +94,12 @@ def get_compra(**kwargs):
 
 
 def get_venta(**kwargs):
+    """
+    Get a integer with the sell rate
+
+    Keyword arguments:
+    provider -- which provider to use, if not the default
+    """
     exchanges = build_exchanges_dict()
     if('provider' in kwargs):
         try:

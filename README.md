@@ -28,7 +28,7 @@ dolar_venta_maxi = dolarpy.get_venta(provider='maxicambios')
 
 ## Dev Instructions
 ```
-- git clone
+- git clone git@github.com:melizeche/dolarpy-wrapper-python.git
 - virtualenv env
 - source env/bin/activate
 - pip install -r requirements.txt
