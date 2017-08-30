@@ -10,7 +10,7 @@ pip install dolarpy
 ```
 
 ## Usage
-```
+```python
 import dolarpy
 
 providers = dolarpy.get_providers() # 'bcp', 'maxicambios', 'cambioschaco', etc...
