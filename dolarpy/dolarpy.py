@@ -29,13 +29,14 @@ def get_providers():
 def build_exchanges_list():
     """Returns a Exchange objects list"""
     dump = get_dump()
+    updated = datetime.strptime(api_dump['updated'], '%Y-%m-%d %H:%M:%S')
     exchanges = []
     for key, value in dump['dolarpy'].iteritems():
         if key == 'bcp':
             temp = BCP(key, value['compra'], value[
-                       'venta'], value['referencial_diario'])
+                       'venta'], value['referencial_diario'], updated)
         else:
-            temp = Exchange(key, value['compra'], value['venta'])
+            temp = Exchange(key, value['compra'], value['venta'], updated)
         exchanges.append(temp)
     return exchanges
 
@@ -43,13 +44,14 @@ def build_exchanges_list():
 def build_exchanges_dict():
     """Returns a Exchange objects dict"""
     dump = get_dump()
+    updated = datetime.strptime(api_dump['updated'], '%Y-%m-%d %H:%M:%S')
     exchanges = {}
     for key, value in dump['dolarpy'].items():
         if key == 'bcp':
             temp = BCP(key, value['compra'], value[
-                       'venta'], value['referencial_diario'])
+                       'venta'], value['referencial_diario'], updated)
         else:
-            temp = Exchange(key, value['compra'], value['venta'])
+            temp = Exchange(key, value['compra'], value['venta'], updated)
         exchanges[key] = (temp)
     return exchanges
 
