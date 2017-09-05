@@ -1,15 +1,14 @@
 import requests
 from datetime import datetime
 from .exchange import Exchange, BCP
+from .settings import API_URL, REQUEST_HEADERS, DEFAULT_PROVIDER
 
-DEFAULT_PROVIDER = 'bcp'
-API_URL = 'https://dolar.melizeche.com/api/1.0/'
 
 
 def get_dump():
     """Get raw API output in a dict"""
     try:
-        api_dump = requests.get(API_URL).json()
+        api_dump = requests.get(API_URL, headers={'User-Agent': 'DolarpyWrapper/Python'}).json()
     except:
         api_dump = None
         print("Something went wrong")

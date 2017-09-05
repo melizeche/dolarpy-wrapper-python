@@ -7,3 +7,4 @@ dist/
 dolarpy.egg-info/
 env2/
 build/
+.cache
